@@ -1,6 +1,8 @@
 package com.example.android_native_flutter_db
 
 import android.annotation.SuppressLint
+import com.example.android_native_flutter_db.database.DatabaseHelper
+import com.example.android_native_flutter_db.preference.PreferenceHelper
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
@@ -33,6 +35,14 @@ class MainActivity : FlutterActivity() {
             .setMethodCallHandler { call: MethodCall, result: MethodChannel.Result? ->
                 if (call.method == AppConstant.androidInsertDbConnectMethod) {
                     DatabaseHelper.androidInsertData(this)
+                }
+            }
+
+        MethodChannel(flutterEngine.dartExecutor, AppConstant.prefDataAndroidChannelName)
+            .setMethodCallHandler { call: MethodCall, result: MethodChannel.Result? ->
+                if (call.method == AppConstant.androidPrefDataConnectMethod) {
+                    val value = PreferenceHelper.getDataFromFlutterPref(this)
+                    result?.success(value)
                 }
             }
     }

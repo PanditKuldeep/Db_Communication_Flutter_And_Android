@@ -10,4 +10,7 @@ object AppConstant {
     const val  insertAndroidDBChannelName = "insertAndroidDBChannelName"
     const val  androidInsertDbConnectMethod = "androidInsertDbConnectMethod"
 
+    const val prefDataAndroidChannelName = "PrefDataAndroidChannelName";
+    const val androidPrefDataConnectMethod = "androidPrefDataConnectMethod";
+
 }
