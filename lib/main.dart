@@ -1,13 +1,11 @@
-import 'package:android_native_flutter_db/database/database_properties.dart';
-import 'package:android_native_flutter_db/database/student_entity.dart';
 import 'package:android_native_flutter_db/databse_access.dart';
 import 'package:android_native_flutter_db/pref_access.dart';
+import 'package:android_native_flutter_db/preference/app_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'database/student_database.dart';
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppPreferences.getInstance();
   runApp(const MyApp());
 }
 
