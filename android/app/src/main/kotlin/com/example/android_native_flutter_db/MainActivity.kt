@@ -38,10 +38,29 @@ class MainActivity : FlutterActivity() {
                 }
             }
 
+        /** use to get data from android in flutter side*/
         MethodChannel(flutterEngine.dartExecutor, AppConstant.prefDataAndroidChannelName)
             .setMethodCallHandler { call: MethodCall, result: MethodChannel.Result? ->
                 if (call.method == AppConstant.androidPrefDataConnectMethod) {
                     val value = PreferenceHelper.getDataFromFlutterPref(this)
+                    result?.success(value)
+                }
+            }
+
+        /** use to save data from flutter side in android Pref*/
+        MethodChannel(flutterEngine.dartExecutor, AppConstant.storeDataAndroidPrefChannelName)
+            .setMethodCallHandler { call: MethodCall, result: MethodChannel.Result? ->
+                if (call.method == AppConstant.storeValueAndroidConnectMethod) {
+                    PreferenceHelper.storeValueInPref()
+                }
+            }
+
+        /** use to get data in flutter from android side*/
+        MethodChannel(flutterEngine.dartExecutor, AppConstant.getDataAndroidPrefChannelName)
+            .setMethodCallHandler { call: MethodCall, result: MethodChannel.Result? ->
+                if (call.method == AppConstant.getValueAndroidConnectMethod) {
+                    val key = call.argument<String>("key")
+                    val value = PreferenceHelper.getValueFromPref(key!!)
                     result?.success(value)
                 }
             }

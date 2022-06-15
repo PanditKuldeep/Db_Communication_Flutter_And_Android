@@ -7,10 +7,19 @@ object AppConstant {
     const val androidChannelName = "NativeToFlutter"
     const val androidDbConnectMethod = "androidDbConnectMethod"
 
-    const val  insertAndroidDBChannelName = "insertAndroidDBChannelName"
-    const val  androidInsertDbConnectMethod = "androidInsertDbConnectMethod"
+    const val insertAndroidDBChannelName = "insertAndroidDBChannelName"
+    const val androidInsertDbConnectMethod = "androidInsertDbConnectMethod"
 
     const val prefDataAndroidChannelName = "PrefDataAndroidChannelName";
     const val androidPrefDataConnectMethod = "androidPrefDataConnectMethod";
+
+    const val storeDataAndroidPrefChannelName =
+        "storeDataAndroidPrefChannelName";
+    const val storeValueAndroidConnectMethod =
+        "storeValueAndroidConnectMethod";
+
+    const val getDataAndroidPrefChannelName =
+        "getDataAndroidPrefChannelName";
+    const val getValueAndroidConnectMethod = "getValueAndroidConnectMethod";
 
 }
