@@ -1,27 +1,13 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:synchronized/synchronized.dart';
 
 class AppPreferences {
-  static late AppPreferences _appPreferences;
   static late SharedPreferences _prefs;
-  static final Lock _lock = Lock();
 
   AppPreferences._();
 
-  static Future<AppPreferences?> getInstance() async {
-    await _lock.synchronized(
-      () async {
-        var singleton = AppPreferences._();
-        await singleton._init();
-        _appPreferences = singleton;
-      },
-    );
-    return _appPreferences;
-  }
-
-  Future _init() async {
-    SharedPreferences.setMockInitialValues({});
+  static Future<SharedPreferences?> getInstance() async {
     _prefs = await SharedPreferences.getInstance();
+    return _prefs;
   }
 
   ///keys

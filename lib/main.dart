@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await AppPreferences.getInstance();
+  await AppPreferences.getInstance();
   runApp(const MyApp());
 }
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/database_screen': (BuildContext context) => AccessDatabase(),
-        '/pref_screen': (BuildContext context) => AccessPreference(),
+        '/pref_screen': (BuildContext context) => const AccessPreference(),
       },
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),

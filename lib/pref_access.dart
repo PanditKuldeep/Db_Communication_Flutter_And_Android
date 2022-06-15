@@ -1,12 +1,10 @@
 import 'package:android_native_flutter_db/preference/app_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AccessPreference extends StatelessWidget {
-  SharedPreferences? preferences;
 
-  AccessPreference({Key? key}) : super(key: key);
+  const AccessPreference({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +14,9 @@ class AccessPreference extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextButton(
-            onPressed: () async {
-              preferences = await SharedPreferences.getInstance();
-            },
-            child: const Text('Init Pref'),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextButton(
             onPressed: () {
-              // AppPreferences.setString(
-              //     AppPreferences.userName, "Kuldeep Pandit");
-              preferences?.setString('userName', 'Kuldeep Pandit');
+              AppPreferences.setString(
+                  AppPreferences.userName, "Kuldeep Pandit");
             },
             child: const Text('Save in Preference'),
           ),
@@ -42,8 +30,6 @@ class AccessPreference extends StatelessWidget {
                   print("FROM_ANDROID : $value");
                 },
               );
-              // print(
-              //     "Pref_Result ${AppPreferences.getString(AppPreferences.userName)}");
             },
             child: const Text('Get from android side Preference'),
           ),
@@ -52,10 +38,8 @@ class AccessPreference extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              // print(
-              //     "Pref_Result ${AppPreferences.getString(AppPreferences.userName)}");
               print(
-                  "FROM_FLUTTER ${preferences?.getString('userName')}");
+                  "FROM_FLUTTER ${AppPreferences.getString(AppPreferences.userName)}");
             },
             child: const Text('Get from flutter side Preference'),
           ),
